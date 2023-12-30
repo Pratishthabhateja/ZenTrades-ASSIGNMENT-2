@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Display</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+</head>
+
+<body>
+  <h3>Import Products</h3>
+  <div class="div12">
+    <div class="card1">
+      <p>Step 1: </p>
+      <div class="content1">
+        <label for="myfile"> Select File</label><br><br>
+        <input type="file" id="fileInput" accept=".json,.csv" />
+        <p>Supported Types: .csv, .json</p>
+      </div>
+    </div> 
+    <div>
+      <button onclick="processFile()">Process File</button>
+    </div>
+    <br>
+
+  <div class="card2">
+    <p>Step 2: </p>
+    <p>Specify Format</p><br>
+    <!-- <form action=""> -->
+          <label for="filetype">File Type</label>
+            <select id="filetype" name="filetype">
+                <option value="csv">csv</option>
+                <option value="json">json</option>
+            </select>
+            <br>
+            <label for="charset">Character Encoding</label>
+            <select id="charset" name="charset">
+                <option value="utf-8">UTF-8</option>
+                <option value="utf-16">UTF-16</option>
+                <option value="iso-8859-1">ISO-8859-1</option>
+            </select>
+            <br>
+            <label for="delimiter">Delimiter</label>
+            <select id="delimiter" name="delimiter">
+                <option value=",">Comma</option>
+                <option value=";">Semicolon</option>
+                <option value="|">Pipe</option>
+            </select>
+            <br>
+            <input type="checkbox" id="myCheckbox" name="myCheckbox" value="checkboxValue">
+            <label for="myCheckbox">Has Header</label>
+      <!-- </form> -->
+    
+  <br>
+  <div id="csvOptions" style="display: none;">
+    <div>
+      <label for="delimiter">Delimiter:</label>
+      <input type="text" id="delimiter" placeholder="Enter CSV delimiter" />
+    </div>
+
+    <div>
+      <label for="encoding">Character Encoding:</label>
+      <input type="text" id="encoding" placeholder="Enter character encoding" />
+    </div>
+
+    <div>
+      <label for="hasHeader">CSV has Header Row:</label>
+      <input type="checkbox" id="hasHeader" />
+    </div>
+
+    <button onclick="importCSVData()">Import Data</button>
+  </div>
+</div>
+
+
+  <div id="displayOptions">
+    <div>
+      <label for="availableFields">Available Fields</label><br>
+      <select id="availableFields" multiple></select>
+    </div>
+
+    <button onclick="addOption()">>></button>
+    <button onclick="removeOption()">&lt;&lt;</button>
+    <div>
+      <label for="displayFields">Fields to Display</label>
+      <select id="displayFields" multiple></select>
+    </div>
+  </div>
+
+  <div>
+    <button onclick="displayData()">Display Data</button>
+  </div>
+  <br>
+  <br>
+  <br>
+
+  <table id="productTable">
+    <thead>
+      <tr>
+
+      </tr>
+    </thead>
+    <tbody id="productList"></tbody>
+  </table>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
